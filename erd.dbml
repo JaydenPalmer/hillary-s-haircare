@@ -1,0 +1,33 @@
+Table customers {
+    id integer [pk, increment]
+    name varchar
+}
+
+Table stylists {
+    id integer [pk, increment]
+    name varchar
+    active boolean
+}
+
+Table services {
+    id integer [pk, increment]
+    name varchar
+    base_price decimal
+}
+
+Table appointments {
+    id integer [pk, increment]
+    customer_id integer [ref: > customers.id]
+    stylist_id integer [ref: > stylists.id]
+    date date
+    time time
+    status boolean
+    notes varchar
+    totalPrice decimal
+}
+
+Table appointment_services {
+    id integer [pk, increment]
+    appointment_id integer [ref: > appointments.id]
+    service_id integer [ref: > services.id]
+}
